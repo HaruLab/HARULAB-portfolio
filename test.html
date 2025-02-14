@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox 理解のための例</title>
+    <style>
+      /* ボディの背景色 */
+      body {
+        background-color: #f0f0f0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      /* フレックスコンテナ */
+      .flex-container {
+        display: flex; /* フレックスボックスの有効化 */
+        justify-content: space-between; /* アイテムの横並びを均等に配置 */
+        align-items: center; /* アイテムを縦方向の中央に配置 */
+        height: 100px; /* コンテナの高さ */
+        border: 2px solid #0077b6; /* 境界線 */
+        background-color: #e0f7fa;
+        padding: 20px;
+      }
+
+      /* フレックスアイテム */
+      .flex-item {
+        width: 100px; /* 幅 */
+        height: 100px; /* 高さ */
+        background-color: lightcoral;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Flexbox の理解</h2>
+    <div class="flex-container">
+      <div class="flex-item">アイテム1</div>
+      <div class="flex-item">アイテム2</div>
+      <div class="flex-item">アイテム3</div>
+    </div>
+  </body>
+</html>

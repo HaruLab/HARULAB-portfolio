@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        background-color: #f0f0f0;
+        font-family: "Noto Sans JP", sans-serif;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .works-detail {
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .works-detail img {
+        width: 100%;
+        height: auto;
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+        height: 0;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .image-container {
+        grid: 0% fr;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .image-container img {
+        height: auto;
+      }
+
+      .description {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="works-detail">
+      <h1>work name</h1>
+      <p>2022-01-01</p>
+
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/SLPkJ20uuL4"
+          title="【合作】ブルアカ最終編ファンアート合作"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="description">
+        <p>説明</p>
+      </div>
+
+      <div class="image-container">
+        <div class="image-item">
+          <img src="https://placehold.jp/640x360.png" alt="音楽" />
+          <img src="https://placehold.jp/640x360.png" alt="音楽" />
+          <img src="https://placehold.jp/640x360.png" alt="音楽" />
+          <img src="https://placehold.jp/640x360.png" alt="音楽" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

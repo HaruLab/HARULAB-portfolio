@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>料金計算機</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+  </head>
+  <body>
+    <header>
+      <div class="menu-icon">
+        <button id="menu-btn">
+          <img src="img/logo_black.png" alt="メニューアイコン" />
+        </button>
+      </div>
+
+      <nav class="header-nav">
+        <!-- ナビゲーション項目 -->
+        <ul class="nav-items">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <!-- 情報リンク -->
+        <div class="info-links">
+          <ul class="info-items">
+            <li><a href="sitemap.html" class="info-item">サイトマップ</a></li>
+            <li><a href="sitemap.html" class="info-item">Webツール</a></li>
+            <li><a href="work.html" class="info-item">依頼について</a></li>
+            <li><a href="gadget.html" class="info-item">使用デバイス</a></li>
+            <li><a href="b" class="info-item">ブログ</a></li>
+            <li><a href="sitemap.html" class="info-item">お知らせ</a></li>
+            <li>
+              <a href="privacy_policy.html" class="info-item"
+                >プライバシーポリシー</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1>料金計算機</h1>
+      <div class="price">
+        <div class="price-container">   
+          <div class="price-cale">
+            <form id="mvForm">
+              <h2><label for="videoType">動画タイプ選択</label></h2>
+              <select id="videoType" name="videoType">
+                <option value="mv">ミュージックビデオ (MV)</option>
+                <option value="pv">プロモーションビデオ (PV)</option>
+              </select>
+
+              <details class="accordion">
+                <summary>対応可能な制作内容</summary>
+                <p>
+                  MV、PV制作に対応　その他のものでも対応できる場合がございますので、ご相談ください。
+                </p>
+              </details>
+
+              <h2><label for="plan">プラン選択</label></h2>
+              <select id="plan" name="plan">
+                <option value="basic">松</option>
+                <option value="normal">竹 (一部3DCG OK)</option>
+                <option value="premium">梅 (Full 3DCG OK)</option>
+              </select>
+
+              <details class="accordion">
+                <summary>プランについて</summary>
+                <p>
+                  <strong>松プラン：</strong>リリックモーションのみ（歌詞が入った動画）。<br />
+                  <strong>竹プラン：</strong>一部カットのみ3DCG対応可。カメラワーク調整も可能。<br />
+                  <strong>梅プラン：</strong>全カット3DCG対応可。カメラワークや演出の自由度が高いプラン。
+                </p>
+              </details>
+              
+
+              <h2><label for="deadline">ご希望納期</label></h2>
+              <select id="deadline" name="deadline">
+                <option value="1">納期まで1か月以内</option>
+                <option value="2">納期まで2か月以上</option>
+                <option value="0">指定なし</option>
+              </select>
+
+              <details class="accordion">
+                <summary>納期について</summary>
+                <p>
+                  映像練習の一環として制作依頼を受け付けておりますが、本業ではないため、諸事情により納品が遅れる可能性がございます。ご理解の上ご依頼をご検討ください
+                </p>
+              </details>
+
+              <h2><label for="illustration">イラスト枚数</label></h2>
+              <select id="illustration" name="illustration">
+                <option value="1">1~4 枚</option>
+                <option value="2">5 枚</option>
+                <option value="3">6 枚</option>
+                <option value="4">7 枚</option>
+                <option value="5">8 枚</option>
+                <option value="6">9 枚</option>
+                <option value="10">10 枚以上</option>
+              </select>
+
+              <details class="accordion">
+                <summary>イラスト枚数について</summary>
+                <p>
+                  １−４枚のイラストの場合は基本料に含む、追加料金なし
+                  ５枚以上の場合は１枚につき2000円追加料金
+                  表情差分は１枚とカウントします
+                </p>
+              </details>
+
+              <h2><label for="background">背景有無</label></h2>
+              <select id="background" name="background">
+                <option value="yes">背景あり</option>
+                <option value="no">背景なし</option>
+              </select>
+
+              <details class="accordion">
+                <summary>背景とは</summary>
+                <p>
+                  下線だけのシンプルなアコーディオンメニュー。クセがなくどんなサイトでも使いやすいのが特徴です。
+                </p>
+              </details>
+
+              <div class="result">
+                <h2>計算結果</h2>
+
+                <div class="result-container">
+                  <p>
+                    <span class="bold">予算目安:</span>
+                    <span id="estimated-budget">0円</span>
+                  </p>
+                  <p>
+                    <span class="bold">納期目安:</span>
+                    <span id="estimated-delivery">未計算</span>
+                  </p>
+                  <p>
+                    <span class="bold">サンプル動画リンク:</span>
+                    <a href="https://example.com/sample-video" target="_blank"
+                      >サンプル動画</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="result-button"
+                onclick="calculateBudget()"
+              >
+                計算
+              </button>
+            </form>
+          </div>
+          
+          <div class="question">
+            <h2><label for="videoType">詳細</label></h2>
+            <details class="accordion">
+              <summary>価格改定のお知らせ</summary>
+              <p>2025年2月より、料金プランが改定されました。ご確認ください。</p>
+            </details>
+
+            <details class="accordion">
+              <summary>注意事項</summary>
+              <p>映像練習の一環として制作依頼を受け付けておりますが、本業ではないため、諸事情により納品が遅れる可能性がございます。</p>
+              <p>指定がなければ、FHD 1920×1080の解像度で、24fpsまたは30fpsで納品します。</p>
+              <p>制作期間は最低1ヶ月が必要です。</p>
+              <p>企業案件は受付していますが、お支払い方法をもう一度後確認ください。</p>
+              <p>不明な点がありましたらDMでお問い合わせください。</p>
+            </details>
+            
+
+            <details class="accordion">
+              <summary>お支払い方法について</summary>
+              <p>
+                お支払いは「Kyash」または「Amazonギフトコード」に対応しております。  
+                申し訳ありませんが、銀行振り込みには対応できませんのでご了承ください。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>事前に伝えてほしいこと</summary>
+              <ul>
+                <li><strong>希望納期</strong></li>
+                <li><strong>希望予算</strong></li>
+                <li><strong>活動名</strong></li>
+                <li><strong>イラスト</strong></li>
+                <p>
+                  イラストの有無、枚数、背景の有無を教えてください。<br />
+                  可能であれば、パーツ分け（髪、背景など）のデータをご提供いただけると助かります。
+                </p>
+                <li><strong>要望</strong></li>
+                <p>
+                  参考資料があればお送りください。<br />
+                  具体的な要望を伝えていただけると、よりご希望に沿った作品を作りやすくなります。
+                </p>
+                <li><strong>歌詞とクレジット情報</strong></li>
+                <p>
+                  歌詞やクレジット情報をご提供いただいた後、金額をご提示いたします。<br />
+                  また、納期前には進捗状況をお知らせいたします。
+                </p>
+                <li><strong>リファレンス映像・参考映像</strong></li>
+                <p>
+                  ご参考となる映像資料をお送りいただけると、よりイメージに沿った制作ができます。<br />
+                  映像のスタイルや色合い、雰囲気を参考にさせていただきます。
+                </p>
+              </ul>
+            </details>
+            
+            
+
+            <details class="accordion">
+              <summary>納品形式について</summary>
+              <p>
+                納品は、ご希望の形式に対応可能です。MP4やMOVなどの動画形式、PSDやPNGの画像形式、FBXやOBJなどの3Dデータ形式など、ご相談の上決定いたします。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>この計算機について</summary>
+              <p>
+                あくまでも参考の料金としてお考えください。実際の料金は、ご依頼内容によって変動いたしますので、お気軽にご相談ください。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>連絡手段について</summary>
+              <p>
+                ツイッター、ディスコードでの連絡が可能です。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>依頼の流れ</summary>
+              <p>
+                1. <strong>相談・受注</strong><br>
+                ご依頼内容をお伺いし、詳細な要望や納期、予算についてお話し合いを行います。その後、作業内容や料金について合意が得られましたら正式に受注となります。
+              </p>
+              <p>
+                2. <strong>進捗・修正</strong><br>
+                敵機的に進捗をご報告いたします。途中で修正や追加の要望があれば、お気軽にお知らせください！
+              </p>
+              <p>
+                3. <strong>完納・ご請求書発行</strong><br>
+                作業が完了した時点で、納品物をお客様に確認していただきます。問題がなければ、請求書を発行いたします。
+              </p>
+              <p>
+                4. <strong>お支払い</strong><br>
+                請求書に記載された金額をお支払いいただきます。お支払いが完了した段階で、正式に取引が完了となります。
+              </p>
+            </details>
+            
+            <details class="accordion">
+              <summary>実績公開について</summary>
+              <p>
+                制作した作品は基本的に、実績として公開します。公開不可の案件につきましては、事前にご相談ください。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>リテイク</summary>
+              <p>
+                こちらのミスによる修正は全て対応いたしますが、大きな変更を要するリテイクは有料となる場合があります。
+              </p>
+            </details>
+            
+            <details class="accordion">
+              <summary>実績公開について</summary>
+              <p>
+                制作した作品は、実績として公開させていただく場合がございます。公開不可の案件につきましては、事前にご相談ください。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>MV使用に関する免責事項</summary>
+              <p>
+                制作したMVを使用したことにより発生した一切のトラブルや問題について、制作者は一切の責任を負いません
+              </p>
+            </details>
+            
+            <details class="accordion">
+              <summary>企業依頼について</summary>
+              <p>
+                企業様からのご依頼も承っておりますがお支払い方法が限られておりますため、おそらく対応できないというのが現状です。
+              </p>
+            </details>
+            
+<details class="accordion">
+  <summary>使用しているソフトウェアについて</summary>
+  <p>
+    主に以下のソフトウェアを使用しています：
+    <br>After Effects：映像編集、エフェクト追加
+    <br>Blender：3Dモデリング、アニメーション、レンダリング
+    <br>Photoshop：画像編集、合成、レタッチ
+    <br>Illustrator：ベクターグラフィックの作成、ロゴデザイン
+    <br>AviUtl：動画編集、エフェクト適用
+  </p>
+  <p>
+    その他のソフトにも対応可能な場合がございますので、ご相談ください。
+  </p>
+</details>
+
+            <details class="accordion">
+              <summary>納品場所について</summary>
+              <p>
+                主にAfter Effects、Blender、Photoshop、Illustratorを使用しております。その他のソフトにも対応可能な場合がございますので、ご相談ください。
+              </p>
+            </details>
+
+            <details class="accordion">
+              <summary>著作権</summary>
+              <p>
+                ・著作権は譲渡いたしません。
+              </p>
+            </details>
+
+
+            
+            
+
+
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 HARULAB</p>
+      </footer>
+    </div>
+    </main>
+  </body>
+</html>
+
+
+    <script>
+      function calculateBudget() {
+        const plan = document.getElementById("plan").value;
+        const deadline = document.getElementById("deadline").value;
+        const illustration = parseInt(
+          document.getElementById("illustration").value
+        );
+        const background = document.getElementById("background").value;
+
+        let basePrice = 0;
+        let deliveryTime = "";
+
+        switch (plan) {
+          case "basic":
+            basePrice = 10000;
+            break;
+          case "normal":
+            basePrice = 30000;
+            break;
+          case "premium":
+            basePrice = 40000;
+            break;
+        }
+
+        let illustrationCost = 0;
+        if (illustration > 4) {
+          illustrationCost = (illustration - 4) * 2000;
+        }
+
+        const backgroundCost = background === "yes" ? 5000 : 0;
+
+        switch (deadline) {
+          case "1":
+            deliveryTime = "1か月以内";
+            break;
+          case "2":
+            deliveryTime = "2か月以上";
+            break;
+          default:
+            deliveryTime = "指定なし";
+            break;
+        }
+
+        const totalPrice = basePrice + illustrationCost + backgroundCost;
+
+        document.getElementById(
+          "estimated-budget"
+        ).textContent = `${totalPrice}円`;
+        document.getElementById("estimated-delivery").textContent =
+          deliveryTime;
+      }
+
+
+       // メニューボタンをクリックしたときの処理
+       document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          var nav = document.querySelector(".header-nav");
+          nav.classList.toggle("open"); // openクラスをトグル
+        });
+
+      // フィルタリング機能
+      document.querySelectorAll(".filter-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          document.querySelectorAll(".grid-item").forEach((item) => {
+            item.style.display =
+              filter === "all" || item.dataset.category === filter
+                ? "block"
+                : "none";
+          });
+        });
+      });
+
+      // NEW 表示制御
+      document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date();
+        const newThreshold = 180; // 180日以内なら「NEW」表示
+
+        document.querySelectorAll(".grid-item").forEach((item) => {
+          let releaseDateStr = item.dataset.release;
+          if (!releaseDateStr) return;
+
+          let releaseDate = new Date(releaseDateStr);
+          let diffDays = (today - releaseDate) / (1000 * 60 * 60 * 24);
+
+          let newTag = item.querySelector(".newornot");
+          newTag.style.display = diffDays > newThreshold ? "none" : "block";
+        });
+      });
+
+      // ナビゲーションバーの要素を取得
+      const navBar = document.querySelector(".nav-bar");
+
+      // ナビゲーションバーの表示切り替え
+      function toggleNavBar() {
+        if (window.innerWidth >= 500 || window.innerWidth <= 300) {
+          navBar.style.display = "none"; // 500px以上または300px以下の場合に非表示
+        } else {
+          navBar.style.display = "block"; // 300pxより大きく500px未満の場合に表示
+        }
+      }
+
+      // 初期表示時に呼び出し
+      toggleNavBar();
+
+      // ウィンドウサイズが変更されたときにも呼び出し
+      window.addEventListener("resize", toggleNavBar);
+
+      // スクロールイベントを監視
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          navBar.classList.add("hidden"); // ナビゲーションバーを隠す
+        } else {
+          navBar.classList.remove("hidden"); // ナビゲーションバーを表示
+        }
+      });
+    </script>
+
+    <style>
+      /* ----- 基本のスタイル ----- */
+.accordion {
+  color: #000000;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+h1 {
+  position: fixed;  /* ヘッダーを固定 */
+  top: 25px;  /* 上端に配置 */
+  right: 40px;  /* 左端に配置 */
+  font-size: 20px;  /* フォントサイズを調整 */
+  z-index: 10;  /* 他の要素よりも前面に表示 */
+}
+
+
+.price-cale h2 {
+  text-align: left;
+}
+
+select,
+input[type="number"] {
+  font-size: 15px;
+  width: 100%;
+  padding: 40px;
+  color: #000000;
+  border: none;
+  border-radius: 50px;
+  background-color: #96979940;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+}
+
+.result-button {
+  background-color: rgba(124, 124, 124, 0.095);
+  color: #313131;
+  border: none;
+  padding: 30px 39px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+}
+
+.result-button:hover {
+  background-color: rgb(31, 222, 187);
+}
+
+#result {
+  font-weight: 600;
+  border-radius: 50px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+/* ----- レイアウト関連 ----- */
+.price {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 99%;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.price span {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 1700px) {
+  .price {
+    grid-template-columns: 1fr;
+  }
+}
+
+.accordion ul {
+  padding-left: 20px;
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.accordion li {
+  margin-bottom: 5px;
+  list-style: disc;
+}
+
+.price h1 {
+  font-size: 30px;
+  padding-bottom: 30px;
+  padding-top: 100px;
+}
+
+.price-container {
+  padding-top: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.price-container h2 {
+  font-size: 40px;
+}
+
+/* ----- アコーディオン関連 ----- */
+.accordion {
+  margin-bottom: 5px;
+  border-bottom: 2px solid #d6dde3;
+}
+
+.accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 2em 0em;
+  color: #333333;
+  font-weight: 600;
+  cursor: pointer;
+  padding-top: 40px;
+}
+
+.accordion summary::after {
+  transform: translateY(-25%) rotate(45deg);
+  width: 7px;
+  height: 7px;
+  margin-left: 10px;
+  border-bottom: 2px solid #333333b3;
+  border-right: 2px solid #333333b3;
+  content: "";
+  transition: transform 0.5s;
+}
+
+.accordion[open] summary::after {
+  transform: rotate(225deg);
+}
+
+.accordion p {
+  font-size: 15px;
+  position: relative;
+  transform: translateY(-10px);
+  opacity: 0;
+  margin: 0;
+  padding: 1em;
+  color: #333;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.accordion[open] p {
+  transform: none;
+  opacity: 1;
+}
+
+.accordion summary {
+  list-style: none;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ----- 支払い関連 ----- */
+.payment {
+  margin: 10px;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.payment-container {
+  padding: 10px 20px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+
+.payment-container li {
+  padding-left: 30px;
+}
+
+.payment-service {
+  border-radius: 20px;
+  padding: 20px 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3px, 0.3fr));
+}
+
+.payment-service-item {
+  text-align: center;
+}
+
+.payment-service-item img {
+  width: 30%;
+  margin-bottom: 10px;
+}
+
+/* ----- 結果表示 ----- */
+.result-container a {
+  font-size: 10px;
+}
+
+.result-container span {
+  font-size: 15px;
+}
+
+.result-container p {
+  margin: 0;
+  padding: 5px 0px;
+}
+
+/* ----- レスポンシブデザイン ----- */
+@media screen and (max-width: 768px) {
+  .price {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-service {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+    </style>
+  </body>
+</html>
