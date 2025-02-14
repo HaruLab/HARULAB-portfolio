@@ -1,74 +1,91 @@
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>料金計算機</title>
-        <link rel="stylesheet" href="styles.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP&display=swap"
-        rel="stylesheet"
-        />
-        <link rel="stylesheet" href="styles.css" />
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
 
-    </head>
-    <body>
-        <header>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
         <div class="menu-icon">
-            <button id="menu-btn">
+          <button id="menu-btn">
             <img src="img/logo_black.png" alt="メニューアイコン" />
-            </button>
+          </button>
         </div>
 
         <nav class="header-nav">
-            <!-- ナビゲーション項目 -->
-            <ul class="nav-items">
+          <!-- ナビゲーション項目 -->
+          <ul class="nav-items">
             <li><a href="index.html">Home</a></li>
             <li><a href="works.html">Works</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
-            </ul>
+          </ul>
 
-            <!-- 情報リンク -->
-            <div class="info-links">
+          <!-- 情報リンク -->
+          <div class="info-links">
             <ul class="info-items">
-                <li><a href="sitemap.html" class="info-item">サイトマップ</a></li>
-                <li><a href="sitemap.html" class="info-item">Webツール</a></li>
-                <li><a href="work.html" class="info-item">依頼について</a></li>
-                <li><a href="gadget.html" class="info-item">使用デバイス</a></li>
-                <li><a href="b" class="info-item">ブログ</a></li>
-                <li><a href="sitemap.html" class="info-item">お知らせ</a></li>
-                <li>
+              <li><a href="sitemap.html" class="info-item">サイトマップ</a></li>
+              <li><a href="sitemap.html" class="info-item">Webツール</a></li>
+              <li><a href="work.html" class="info-item">依頼について</a></li>
+              <li><a href="gadget.html" class="info-item">使用デバイス</a></li>
+              <li><a href="b" class="info-item">ブログ</a></li>
+              <li><a href="sitemap.html" class="info-item">お知らせ</a></li>
+              <li>
                 <a href="privacy_policy.html" class="info-item"
-                    >プライバシーポリシー</a
+                  >プライバシーポリシー</a
                 >
-                </li>
+              </li>
             </ul>
-            </div>
+          </div>
         </nav>
-        </header>
-        <main>
-            <div class="container">
-                <div class="price">
-                <div class="price-container">
-                    <h1>料金計算機</h1>
-                    <div class="price-cale
+      </header>
 
-        <footer>
-            <p>&copy; 2025 HARULAB</p>
-        </footer>
-        </div>
-        </main>
-    </body>
-    </html>
+      <main>
+        <section class="contact-section">
+          <h2>Contact</h2>
+          <p>お問い合わせは、メールアドレスまたはTwitterのDMでお願いします。</p>
+          <form action="#" method="POST" class="contact-form"></form>
+        </section>
+      </main>
 
+      <footer>
+        <p>&copy; 2025 HARULAB</p>
+      </footer>
+    </div>
+  </body>
+</html>
 
-    
+<script>
+  // メニューボタンをクリックしたときの処理
+  document.getElementById("menu-btn").addEventListener("click", function () {
+    var nav = document.querySelector(".header-nav");
+    nav.classList.toggle("open"); // openクラスをトグル
+  });
+</script>
 
-        <style>
+<style>
+  /* メインセクション */
+  main {
+    padding: 40px 0;
+  }
 
-        </style>
-    </body>
-    </html>
+  .contact-section {
+    padding: 40px;
+    padding-bottom: 500px;
+  }
+
+  .contact-form button:hover {
+    background-color: #0056b3;
+  }
+</style>

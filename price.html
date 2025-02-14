@@ -342,60 +342,58 @@
 
 
     <script>
-      function calculateBudget() {
-        const plan = document.getElementById("plan").value;
-        const deadline = document.getElementById("deadline").value;
-        const illustration = parseInt(
-          document.getElementById("illustration").value
-        );
-        const background = document.getElementById("background").value;
+  function calculateBudget() {
+  // 各フォームの値を取得
+  const videoType = document.getElementById("videoType").value;
+  const plan = document.getElementById("plan").value;
+  const illustrationCount = parseInt(document.getElementById("illustration").value, 10);
+  const background = document.getElementById("background").value;
+  const deadline = document.getElementById("deadline").value;
 
-        let basePrice = 0;
-        let deliveryTime = "";
+  let basePrice = 0;
 
-        switch (plan) {
-          case "basic":
-            basePrice = 10000;
-            break;
-          case "normal":
-            basePrice = 30000;
-            break;
-          case "premium":
-            basePrice = 40000;
-            break;
-        }
+  // **基本料金の設定**
+  if (videoType === "mv") {
+    if (plan === "basic") basePrice = 10000;
+    else if (plan === "normal") basePrice = 20000;
+    else if (plan === "premium") basePrice = 50000;
+  } else if (videoType === "pv") {
+    if (plan === "basic") basePrice = 10000;
+    else if (plan === "normal") basePrice = 20000;
+    else if (plan === "premium") basePrice = 30000;
+  }
 
-        let illustrationCost = 0;
-        if (illustration > 4) {
-          illustrationCost = (illustration - 4) * 2000;
-        }
+  // **イラストの追加料金**
+  let illustrationFee = 0;
+  if (illustrationCount > 1) {
+    illustrationFee = (illustrationCount - 1) * 2000;
+  }
 
-        const backgroundCost = background === "yes" ? 5000 : 0;
+  // **背景なしの追加料金**
+  let backgroundFee = background === "no" ? 4000 : 0;
 
-        switch (deadline) {
-          case "1":
-            deliveryTime = "1か月以内";
-            break;
-          case "2":
-            deliveryTime = "2か月以上";
-            break;
-          default:
-            deliveryTime = "指定なし";
-            break;
-        }
+  // **納期による割引**
+  let discount = 0;
+  if (deadline !== "1") { // 1か月以上 or 指定なしなら割引
+    discount = 5000;
+  }
 
-        const totalPrice = basePrice + illustrationCost + backgroundCost;
+  // **最終料金計算**
+  let totalPrice = basePrice + illustrationFee + backgroundFee - discount;
 
-        document.getElementById(
-          "estimated-budget"
-        ).textContent = `${totalPrice}円`;
-        document.getElementById("estimated-delivery").textContent =
-          deliveryTime;
-      }
+  // **結果を表示**
+  document.getElementById("estimated-budget").textContent = `${totalPrice.toLocaleString()}円`;
+
+  // **納期の表示**
+  const deadlineText = deadline === "1" ? "1か月以内" : "1か月以上 (5,000円引き)";
+  document.getElementById("estimated-delivery").textContent = deadlineText;
+}
+
+
 
 
        // メニューボタンをクリックしたときの処理
-       document
+      document
         .getElementById("menu-btn")
         .addEventListener("click", function () {
           var nav = document.querySelector(".header-nav");
