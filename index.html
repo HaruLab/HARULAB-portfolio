@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="menu-icon">
+          <button id="menu-btn">
+            <img src="img/logo_black.png" alt="メニューアイコン" />
+          </button>
+        </div>
+
+        <nav class="header-nav">
+          <!-- ナビゲーション項目 -->
+          <ul class="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="works.html">Works</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <!-- 情報リンク -->
+          <div class="info-links">
+            <ul class="info-items">
+              <li><a href="sitemap.html" class="info-item">サイトマップ</a></li>
+              <li><a href="sitemap.html" class="info-item">Webツール</a></li>
+              <li><a href="price.html" class="info-item">依頼について</a></li>
+              <li><a href="gadget.html" class="info-item">使用デバイス</a></li>
+              <li><a href="b" class="info-item">ブログ</a></li>
+              <li><a href="sitemap.html" class="info-item">お知らせ</a></li>
+              <li>
+                <a href="privacy_policy.html" class="info-item"
+                  >プライバシーポリシー</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section>
+          <div class="title-text">
+            <h2>WORKS</h2>
+            <p>制作物一覧</p>
+          </div>
+        </section>
+      </main>
+
+      <!-- フィルターボタン -->
+      <div class="filter-buttons">
+        <button class="filter-button" data-filter="all">ALL</button>
+        <button class="filter-button" data-filter="mv">MV</button>
+        <button class="filter-button" data-filter="work">WORK</button>
+        <button class="filter-button" data-filter="fanart">FANART</button>
+      </div>
+
+      <!-- 作品グリッド -->
+      <div class="grid-container" id="grid-container">
+        <!-- 動的にアイテムが追加されます -->
+      </div>
+
+      <!-- スマートフォン向けSNSのurl -->
+      <div class="nav-bar">
+        <div class="nav-bar-item">
+          <a href="https://github.com/HaruLab">
+            <img src="/img/icon/github.svg" alt="アイコン" />
+          </a>
+          <a href="https://www.instagram.com/harulablab/">
+            <img src="/img/icon/insta.svg" alt="アイコン" />
+          </a>
+          <a href="https://x.com/Harulablab">
+            <img src="/img/icon/tw.svg" alt="アイコン" />
+          </a>
+          <a href="https://www.youtube.com/@HaruLab">
+            <img src="img/icon/yt.svg" alt="アイコン" />
+          </a>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 HARULAB</p>
+      </footer>
+    </div>
+
+    <script>
+      // メニューボタンをクリックしたときの処理
+      document
+        .getElementById("menu-btn")
+        .addEventListener("click", function () {
+          var nav = document.querySelector(".header-nav");
+          nav.classList.toggle("open"); // openクラスをトグル
+        });
+
+      // フィルタリング機能
+      document.querySelectorAll(".filter-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          document.querySelectorAll(".grid-item").forEach((item) => {
+            item.style.display =
+              filter === "all" || item.dataset.category === filter
+                ? "block"
+                : "none";
+          });
+        });
+      });
+
+      // NEW 表示制御
+      document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date();
+        const newThreshold = 180; // 180日以内なら「NEW」表示
+
+        document.querySelectorAll(".grid-item").forEach((item) => {
+          let releaseDateStr = item.dataset.release;
+          if (!releaseDateStr) return;
+
+          let releaseDate = new Date(releaseDateStr);
+          let diffDays = (today - releaseDate) / (1000 * 60 * 60 * 24);
+
+          let newTag = item.querySelector(".newornot");
+          newTag.style.display = diffDays > newThreshold ? "none" : "block";
+        });
+      });
+
+      // ナビゲーションバーの要素を取得
+      const navBar = document.querySelector(".nav-bar");
+
+      // ナビゲーションバーの表示切り替え
+      function toggleNavBar() {
+        if (window.innerWidth >= 500 || window.innerWidth <= 300) {
+          navBar.style.display = "none"; // 500px以上または300px以下の場合に非表示
+        } else {
+          navBar.style.display = "block"; // 300pxより大きく500px未満の場合に表示
+        }
+      }
+
+      // 初期表示時に呼び出し
+      toggleNavBar();
+
+      // ウィンドウサイズが変更されたときにも呼び出し
+      window.addEventListener("resize", toggleNavBar);
+
+      // スクロールイベントを監視
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          navBar.classList.add("hidden"); // ナビゲーションバーを隠す
+        } else {
+          navBar.classList.remove("hidden"); // ナビゲーションバーを表示
+        }
+      });
+
+      // グリッドアイテムのリスト（データ）
+      const gridItems = [
+        {
+          category: "fanart",
+          release: "2025-01-01",
+          link: "https://www.youtube.com/watch?v=ejbwpKj_-XE",
+          img: "https://placehold.jp/1920x1080.png",
+          alt: "音楽",
+          title: "コバルトメモリー合作",
+        },
+        {
+          category: "fanart",
+          release: "2025-01-01",
+          link: "",
+          img: "https://placehold.jp/1920x1080.png",
+          alt: "音楽",
+          title: "REEL2023",
+        },
+        {
+          category: "fanart",
+          release: "2025-01-10",
+          link: "",
+          img: "https://placehold.jp/1920x1080.png",
+          alt: "音楽",
+          title: "Snow on the ground",
+        },
+      ];
+      // アイテムをページに追加する処理
+      const gridContainer = document.getElementById("grid-container");
+
+      gridItems.forEach((item) => {
+        const gridItem = document.createElement("div");
+        gridItem.classList.add("grid-item");
+        gridItem.dataset.category = item.category;
+        gridItem.dataset.release = item.release;
+
+        gridItem.innerHTML = `
+          <a href="${item.link}" target="_blank">
+            <img src="${item.img}" alt="${item.alt}" />
+            <h3>${item.title}</h3>
+          </a>
+          <div class="newornot">NEW</div>
+        `;
+
+        gridContainer.appendChild(gridItem);
+      });
+    </script>
+  </body>
+</html>
