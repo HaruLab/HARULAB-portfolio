@@ -1,0 +1,309 @@
+body {
+  font-family: "Arvo", sans-serif; /* デフォルトは日本語フォント */
+  margin: 0; /* マージンをリセット */
+  letter-spacing: 1px;
+}
+
+a {
+  color: inherit; /* 親要素の色を引き継ぐ */
+  text-decoration: none; /* 下線を消す */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
+}
+
+a:hover {
+  color: inherit; /* ホバー時でも色変更を無効にする */
+  text-decoration: none; /* ホバー時の下線も無効にする */
+}
+
+/*ヘッダー*/
+
+/* ヘッダー */
+header {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(10.5px);
+  position: fixed;
+  top: 0;
+  height: 50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+/* メニューアイコン */
+.menu-icon button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2000;
+}
+
+.menu-icon img {
+  width: 150px; /* アイコンサイズ調整 */
+  height: auto;
+}
+
+/* ヘッダーナビゲーション */
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #e0e0e0ef; /* 背景色 */
+  display: none;
+  flex-direction: column;
+  padding-top: 100px;
+  z-index: 999;
+}
+
+/* ナビゲーション項目 */
+.nav-items {
+  font-size: 30px;
+  padding: 10px 30px;
+  text-align: left;
+  list-style: none; /* ・を消す */
+  margin: 0;
+}
+
+.nav-items li {
+  margin-bottom: 30px;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: color 0.3s ease;
+}
+
+/* インフォリンク */
+.info-links {
+  font-size: 10px; /* 少し大きめのフォントサイズに調整 */
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.info-items li {
+  width: calc(50% - 10px); /* 2列表示 */
+  margin-bottom: 15px;
+  list-style: none;
+}
+
+.info-items a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.info-items a:hover {
+  color: #00bcd4;
+}
+.nav-items a:hover {
+  color: #00bcd4;
+}
+
+/* メニューが開いている状態 */
+.header-nav.open {
+  display: flex;
+}
+
+/* スクロールバーを非表示にする */
+html,
+body {
+  overflow: scroll; /* スクロールは可能にする */
+  background-color: rgb(228, 228, 228); /*背景色を設定*/
+}
+
+::-webkit-scrollbar {
+  display: none; /* スクロールバーを非表示にする */
+}
+header {
+  display: flex; /* 横並びにする */
+  align-items: center; /* 垂直方向の中央揃え */
+  padding: 25px;
+  font-size: 7px; /* 6px だと小さすぎるので調整 */
+}
+
+.header-nav {
+  margin-left: auto; /* ナビゲーションを右側に寄せる */
+}
+
+.header-nav-item {
+  font-size: 10px;
+  display: flex;
+  gap: 20px; /* リンクの間隔 */
+}
+
+.header-nav-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.title-text {
+  font-weight: normal;
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.title-text h2 {
+  font-size: 20px;
+}
+
+.title-text p {
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.nav-bar {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0); /* 初期状態では元の位置に表示 */
+  position: fixed;
+  bottom: 35px; /* 画面下に20pxの余白 */
+  left: 1px;
+  margin: 0 5%; /* 左右に20%の余白 */
+  padding: 10px 10px;
+  background-color: #0ab5ac;
+  border-radius: 50px; /* 角を丸く */
+}
+/* アイテムを横並びに */
+.nav-bar-item {
+  display: flex;
+  justify-content: space-evenly; /* アイコン間隔を均等に */
+  width: 100%; /* 親要素の幅を100%に設定 */
+}
+
+.nav-bar-item img {
+  padding: 5px;
+  display: block; /* 画像の下の隙間をなくす */
+
+  filter: brightness(200) grayscale(100%) contrast(100%);
+  width: 20px; /* 横幅を32pxに設定 */
+  height: 20px; /* 高さを32pxに設定 */
+}
+
+.nav-bar.hidden {
+  opacity: 0; /* 透明にする */
+  transform: translateY(100px); /* 下に移動して非表示にする */
+  pointer-events: none; /* 非表示状態でクリックできないようにする */
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.filter-buttons button {
+  padding: 10px 15px;
+  font-family: "arvo", serif;
+  font-size: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+.filter-buttons button:hover {
+  background-color: #0ab5ac;
+  transform: scale(1.1); /* 正しい形式に修正 */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0px; /* アイテム間にスペースを追加 */
+  padding: 0px; /* コンテナ内にパディングを追加 */
+  margin-bottom: 0px;
+}
+
+.grid-item {
+  transform: rotate(0deg);
+  position: relative;
+  padding: 0px;
+  transition: transform 0.2s ease; /* アニメーションのスムーズな遷移 */
+  overflow: hidden;
+}
+
+.grid-item.visible {
+  opacity: 1;
+  transform: translateY(0); /* 表示状態で元に戻す */
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block; /* インライン要素を防ぎ、ブロック要素として表示 */
+  margin: 0; /* マージンをリセット */
+  padding: 0; /* パディングをリセット */
+}
+
+.grid-item h3 {
+  position: absolute;
+  opacity: 0;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  white-space: nowrap; /* 文字を折り返さない */
+  max-width: 100%; /* 幅を親要素に収める */
+  text-align: center; /* テキストを中央揃え */
+}
+
+.grid-item:hover h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.grid-item img {
+  transition: transform 2s ease; /* transformの変化をスムーズに */
+}
+
+.grid-item img:hover {
+  transform: scale(1.2); /* 画像を拡大する */
+}
+
+.grid-item .newornot {
+  font-family: futura, sans-serif;
+  font-size: 10px;
+  letter-spacing: px;
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  padding: 8px 20px;
+  background-color: #0ab5ac;
+  color: #fff;
+  border-radius: 50px;
+}
+
+footer {
+  letter-spacing: 2px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 8px;
+  padding: 30px;
+  background-color: #0ab5ac;
+}
